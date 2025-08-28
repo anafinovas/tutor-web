@@ -1,4 +1,5 @@
-﻿let engine;
+﻿import { CreateMLCEngine } from "https://cdn.jsdelivr.net/npm/@mlc-ai/web-llm@0.2.79/lib/index.js";
+let engine;
 
 const SYSTEM = `
 You are a bilingual educational tutor (English & Hungarian).
@@ -32,3 +33,4 @@ export async function complete(userText, history = []) {
   });
   return out.choices?.[0]?.message?.content ?? "";
 }
+
