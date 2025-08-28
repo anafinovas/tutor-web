@@ -26,6 +26,9 @@ const log = document.getElementById("log");
 const form = document.getElementById("form");
 const input = document.getElementById("input");
 const history = [];
+if (!form) {
+  (document.getElementById('status')||{}).textContent = "Chat form not found on page.";
+}
 
 function add(role, text) {
   const div = document.createElement("div");
@@ -50,7 +53,8 @@ form?.addEventListener("submit", async (e) => {
     while (history.length > 8) history.shift(); // keep small for speed
   } catch (err) {
     console.error(err);
-    add("assistant", "Something went wrong. Try again with a short question.");
-  }
+    thinking.textContent = 'Tutor: ' + (err && err.message ? err.message : String(err));
+}
 });
+
 
