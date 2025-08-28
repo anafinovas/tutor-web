@@ -58,3 +58,16 @@ form?.addEventListener("submit", async (e) => {
 });
 
 
+const sendBtn = document.getElementById('sendBtn');
+sendBtn?.addEventListener('click', (e) => {
+  e.preventDefault();
+  // trigger the existing submit handler you already have
+  form?.dispatchEvent(new Event('submit', { cancelable: true }));
+});
+window.addEventListener('error', (ev) => {
+  try { add('assistant', 'JS error: ' + ev.message); } catch {}
+});
+window.addEventListener('unhandledrejection', (ev) => {
+  const msg = (ev && ev.reason && ev.reason.message) ? ev.reason.message : String(ev.reason || 'unknown');
+  try { add('assistant', 'Error: ' + msg); } catch {}
+});
