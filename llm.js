@@ -10,7 +10,7 @@ You are a bilingual educational tutor (English & Hungarian).
 
 export async function initLLM() {
   if (engine) return engine;
-  const { CreateMLCEngine } = window.webllm;
+
   engine = await CreateMLCEngine({
     model: "Phi-3-mini-4k-instruct-q4f16_1-MLC",  // tiny browser model
     gpu_preferred: true
