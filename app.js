@@ -1,5 +1,20 @@
-﻿import { complete } from "./llm.js";
+﻿import { complete, initLLM } from "./llm.js";
+const statusEl = document.getElementById("status");
 
+if (!('gpu' in navigator)) {
+  statusEl.textContent = "This device can’t run the local model. Try Chrome/Edge on a desktop/laptop.";
+} else {
+  (async () => {
+    try {
+      statusEl.textContent = "Loading model… first time can take ~1 minute.";
+      await initLLM();
+      statusEl.textContent = "Model ready ✅";
+    } catch (e) {
+      console.error(e);
+      statusEl.textContent = "Model failed to load. See Console or try another browser.";
+    }
+  })();
+}
 const log = document.getElementById("log");
 const form = document.getElementById("form");
 const input = document.getElementById("input");

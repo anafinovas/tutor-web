@@ -12,7 +12,7 @@ export async function initLLM() {
   if (engine) return engine;
   const { CreateMLCEngine } = window.webllm;
   engine = await CreateMLCEngine({
-    model: "Llama-3.2-1B-Instruct-q4f16_1-MLC",  // tiny browser model
+    model: "Phi-3-mini-4k-instruct-q4f16_1-MLC",  // tiny browser model
     gpu_preferred: true
   });
   return engine;
