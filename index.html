@@ -11,15 +11,17 @@
     <h1>AI Tutor</h1>
     <p id="status">Tutor is alive ✅ (Day 0)</p>
     <p class="note">We’ll add chat here tomorrow.</p>
+
     <div id="chat">
-  <div id="log" style="border:1px solid #ddd;height:300px;overflow:auto;padding:.5rem;margin:.75rem 0;"></div>
-  <form id="form" style="display:flex;gap:.5rem;">
-    <input id="input" placeholder="Ask in English or Hungarian…" style="flex:1" />
-    <button>Send</button>
-  </form>
-</div>
+      <div id="log" style="border:1px solid #ddd;height:300px;overflow:auto;padding:.5rem;margin:.75rem 0;"></div>
+      <form id="form" style="display:flex;gap:.5rem;">
+        <input id="input" placeholder="Ask in English or Hungarian…" style="flex:1" />
+        <button>Send</button>
+      </form>
+    </div>
   </main>
- <script src="https://cdn.jsdelivr.net/npm/@mlc-ai/web-llm@0.2.48/dist/index.min.js"></script>
-<script type="module" src="app.js?v=12"></script>
+
+  <!-- Only load our app; WebLLM is imported in llm.js as an ES module -->
+  <script type="module" src="app.js?v=19"></script>
 </body>
 </html>
