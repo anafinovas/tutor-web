@@ -1,8 +1,9 @@
-﻿import { complete, initLLM } from "./llm.js";
+import { complete, initLLM } from "./llm.js";
 const statusEl = document.getElementById("status");
 
 if (!('gpu' in navigator)) {
-  statusEl.textContent = "Model failed to load: " + ((e && e.message) ? e.message : String(e));
+  // LINE 1 — just inform, don't use "e" here
+  statusEl.textContent = "This device can’t run the local model. Try Chrome/Edge on a desktop/laptop.";
 } else {
   (async () => {
     try {
@@ -11,7 +12,8 @@ if (!('gpu' in navigator)) {
       statusEl.textContent = "Model ready ✅";
     } catch (e) {
       console.error(e);
-      statusEl.textContent = "Model failed to load. See Console or try another browser.";
+      // LINE 2 — show the real error text
+      statusEl.textContent = "Model failed to load: " + ((e && e.message) ? e.message : String(e));
     }
   })();
 }
