@@ -2,7 +2,7 @@
 const statusEl = document.getElementById("status");
 
 if (!('gpu' in navigator)) {
-  statusEl.textContent = "This device can’t run the local model. Try Chrome/Edge on a desktop/laptop.";
+  statusEl.textContent = "Model failed to load: " + ((e && e.message) ? e.message : String(e));
 } else {
   (async () => {
     try {
