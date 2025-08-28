@@ -11,18 +11,14 @@
     <h1>AI Tutor</h1>
     <p id="status">Tutor is alive ✅ (Day 0)</p>
     <p class="note">We’ll add chat here tomorrow.</p>
-
-    <!-- Chat UI -->
     <div id="chat">
-      <div id="log" style="border:1px solid #ddd;height:300px;overflow:auto;padding:.5rem;margin:.75rem 0;"></div>
-      <form id="form" style="display:flex;gap:.5rem;">
-        <input id="input" placeholder="Ask in English or Hungarian…" style="flex:1" />
-        <button>Send</button>
-      </form>
-    </div>
+  <div id="log" style="border:1px solid #ddd;height:300px;overflow:auto;padding:.5rem;margin:.75rem 0;"></div>
+  <form id="form" style="display:flex;gap:.5rem;">
+    <input id="input" placeholder="Ask in English or Hungarian…" style="flex:1" />
+    <button>Send</button>
+  </form>
+</div>
   </main>
-
-  <!-- Load WebLLM, then our app as an ES module -->
   <script src="https://unpkg.com/@mlc-ai/web-llm/dist/index.min.js"></script>
   <script type="module" src="app.js"></script>
 </body>
