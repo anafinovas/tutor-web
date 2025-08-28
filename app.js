@@ -1,1 +1,33 @@
-﻿console.log("Tutor front-end loaded");
+﻿import { complete } from "./llm.js";
+
+const log = document.getElementById("log");
+const form = document.getElementById("form");
+const input = document.getElementById("input");
+const history = [];
+
+function add(role, text) {
+  const div = document.createElement("div");
+  div.className = role;
+  div.textContent = (role === "user" ? "You: " : "Tutor: ") + text;
+  log.appendChild(div);
+  log.scrollTop = log.scrollHeight;
+}
+
+form?.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const text = input.value.trim();
+  if (!text) return;
+  input.value = "";
+  add("user", text);
+
+  try {
+    const reply = await complete(text, history);
+    add("assistant", reply);
+    history.push({ role: "user", content: text });
+    history.push({ role: "assistant", content: reply });
+    while (history.length > 8) history.shift(); // keep small for speed
+  } catch (err) {
+    console.error(err);
+    add("assistant", "Something went wrong. Try again with a short question.");
+  }
+});
